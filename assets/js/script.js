@@ -80,14 +80,6 @@ $("#task-form-modal .btn-primary").click(function() {
   }
 });
 
-// remove all tasks
-$("#remove-tasks").on("click", function() {
-  for (var key in tasks) {
-    tasks[key].length = 0;
-    $("#list-" + key).empty();
-  }
-  saveTasks();
-
   $(".list-group").on("click", "p", function() {
     // get the textarea's current value/text
     var text = $(this)
@@ -132,7 +124,6 @@ $("#remove-tasks").on("click", function() {
     $(this).replaceWith(taskP);
 
       });
-});
 
 // due date was clicked
 $(".list-group").on("click", "span", function() {
@@ -183,6 +174,15 @@ $(".list-group").on("blur", "input[type='text']", function() {
 
   // replace input with span element
   $(this).replaceWith(taskSpan);
+});
+
+// remove all tasks
+$("#remove-tasks").on("click", function() {
+  for (var key in tasks) {
+    tasks[key].length = 0;
+    $("#list-" + key).empty();
+  }
+  saveTasks(); 
 });
 
 // load tasks for the first time
